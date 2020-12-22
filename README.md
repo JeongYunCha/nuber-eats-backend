@@ -35,13 +35,38 @@ The Backend of Nuber Eats Clone
        }
      }
      ```
-   - restaurants entities 만들기
+   - restaurants entity 만들기
 
      ```typescript
      // restaurant.entity.ts
-     @ArgsType()
+     @ObjectType()
      export class Restaurant {
        @Field(type => String)
        name: string;
+     }
+     ```
+
+   - restaurants dto 만들기
+     ```typescript
+     // create-restaurant.dto.ts
+     @ArgsType()
+     export class CreateRestaurantDto {
+       @Field(type => String)
+       name: string;
+     }
+     ```
+   - ArgsTypes 유효성 체크
+     - `npm i class-validator`
+     ```typescript
+     // create-restaurant.dto.ts
+     @ArgsType()
+     export class CreateRestaurantDto {
+       @Field(type => String)
+       @IsString()
+       @Length(5, 10)
+       name: string;
+       @Field(type => Boolean)
+       @IsBoolean()
+       isVegan: boolean;
      }
      ```
