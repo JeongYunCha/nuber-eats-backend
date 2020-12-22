@@ -70,3 +70,51 @@ The Backend of Nuber Eats Clone
        isVegan: boolean;
      }
      ```
+
+3. Database Configuration
+   - 패키지 설치: `npm install --save @nestjs/typeorm typeorm pg`
+     - [TypeORM](https://typeorm.io/#/supported-platforms)
+       - ORM(Object Relational Mapping, 객체-관계 매핑):
+         - sequelize
+         - mongoose
+         - typeorm(Typescript 기반)
+     - [postgres in MacOS](https://postgresapp.com/)
+     - [postico - graphical client](https://eggerapps.at/postico/)
+   - nestjs에서 dotenv 사용하기: `npm i @nestjs/config`
+   - dev/test/prod 가상변수 설정: `npm i cross-env`
+   - [Joi](https://joi.dev/api/?v=17.3.0)로 스키마 유효성 체크하기: `npm i joi`
+     ```typescript
+     // app.module.ts
+     @Module({
+       imports: [
+         ConfigModule.forRoot({
+           isGlobal: true,
+           envFilePath: `.env.${process.env.NODE_ENV}`,
+           ignoreEnvFile: process.env.NODE_ENV === 'prod',
+           validationSchema: Joi.object({
+             NODE_ENV: Joi.string()
+               .valid('dev', 'prod')
+               .required(),
+             DB_HOST: Joi.string().required(),
+             DB_PORT: Joi.string().required(),
+             DB_USERNAME: Joi.string().required(),
+             DB_PASSWORD: Joi.string().required(),
+             DB_DATABASE: Joi.string().required(),
+           }),
+         }),
+         TypeOrmModule.forRoot({
+           type: 'postgres',
+           host: process.env.DB_HOST,
+           port: +process.env.DB_PORT,
+           username: process.env.DB_USERNAME,
+           password: process.env.DB_PASSWORD,
+           database: process.env.DB_DATABASE,
+           synchronize: true,
+           logging: true,
+         }),
+        ...
+       ],
+       ...
+     })
+     export class AppModule {}
+     ```
