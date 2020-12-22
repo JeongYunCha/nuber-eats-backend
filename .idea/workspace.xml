@@ -11,8 +11,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f157745e-1cff-4774-9cbf-bcd432dcd854" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/restaurants/restaurants.resolver.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app.controller.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app.service.ts" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +31,9 @@
     <option name="projectConfigVersion" value="2" />
   </component>
   <component name="ProjectId" id="1jh2E8D7exz7lv2YqWgxdvZ6gC6" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -40,9 +48,10 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="npm.start:dev">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -53,8 +62,30 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="start:dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start:dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.start:dev" />
+        <item itemvalue="npm.start" />
         <item itemvalue="npm.build" />
       </list>
     </recent_temporary>
@@ -68,7 +99,7 @@
       <option name="presentableId" value="Default" />
       <updated>1604241888438</updated>
       <workItem from="1604241889478" duration="393000" />
-      <workItem from="1604242306175" duration="440000" />
+      <workItem from="1604242306175" duration="3337000" />
     </task>
     <servers />
   </component>
@@ -87,21 +118,29 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state width="1769" height="276" key="GridCell.Tab.0.bottom" timestamp="1604242483377">
-      <screen x="0" y="23" width="1792" height="1017" />
+    <state x="633" y="313" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1604246965413">
+      <screen x="0" y="0" width="1792" height="1120" />
     </state>
+    <state x="633" y="313" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1792.0.1920.1080/0.0.1792.1120@0.0.1792.1120" timestamp="1604246965413" />
+    <state width="1769" height="536" key="GridCell.Tab.0.bottom" timestamp="1604501102491">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state width="1769" height="536" key="GridCell.Tab.0.bottom/1792.0.1920.1080/0.0.1792.1120@0.0.1792.1120" timestamp="1604501102491" />
     <state width="1769" height="276" key="GridCell.Tab.0.bottom/1792.23.1920.1057/0.23.1792.1017@0.23.1792.1017" timestamp="1604242483377" />
-    <state width="1769" height="276" key="GridCell.Tab.0.center" timestamp="1604242483376">
-      <screen x="0" y="23" width="1792" height="1017" />
+    <state width="1769" height="536" key="GridCell.Tab.0.center" timestamp="1604501102490">
+      <screen x="0" y="0" width="1792" height="1120" />
     </state>
+    <state width="1769" height="536" key="GridCell.Tab.0.center/1792.0.1920.1080/0.0.1792.1120@0.0.1792.1120" timestamp="1604501102490" />
     <state width="1769" height="276" key="GridCell.Tab.0.center/1792.23.1920.1057/0.23.1792.1017@0.23.1792.1017" timestamp="1604242483376" />
-    <state width="1769" height="276" key="GridCell.Tab.0.left" timestamp="1604242483375">
-      <screen x="0" y="23" width="1792" height="1017" />
+    <state width="1769" height="536" key="GridCell.Tab.0.left" timestamp="1604501102490">
+      <screen x="0" y="0" width="1792" height="1120" />
     </state>
+    <state width="1769" height="536" key="GridCell.Tab.0.left/1792.0.1920.1080/0.0.1792.1120@0.0.1792.1120" timestamp="1604501102490" />
     <state width="1769" height="276" key="GridCell.Tab.0.left/1792.23.1920.1057/0.23.1792.1017@0.23.1792.1017" timestamp="1604242483375" />
-    <state width="1769" height="276" key="GridCell.Tab.0.right" timestamp="1604242483376">
-      <screen x="0" y="23" width="1792" height="1017" />
+    <state width="1769" height="536" key="GridCell.Tab.0.right" timestamp="1604501102491">
+      <screen x="0" y="0" width="1792" height="1120" />
     </state>
+    <state width="1769" height="536" key="GridCell.Tab.0.right/1792.0.1920.1080/0.0.1792.1120@0.0.1792.1120" timestamp="1604501102491" />
     <state width="1769" height="276" key="GridCell.Tab.0.right/1792.23.1920.1057/0.23.1792.1017@0.23.1792.1017" timestamp="1604242483376" />
     <state x="397" y="170" key="SettingsEditor" timestamp="1604242239857">
       <screen x="0" y="23" width="1792" height="1017" />
