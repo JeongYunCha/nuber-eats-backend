@@ -37,6 +37,8 @@ The Backend of Nuber Eats Clone
      ```
    - restaurants entity 만들기
 
+     - `@ObjectType()`은 스키마 빌드를 위한 GraphQL decorator
+
      ```typescript
      // restaurant.entity.ts
      @ObjectType()
@@ -109,7 +111,7 @@ The Backend of Nuber Eats Clone
            username: process.env.DB_USERNAME,
            password: process.env.DB_PASSWORD,
            database: process.env.DB_DATABASE,
-           synchronize: true,
+           synchronize: process.env.NODE_ENV !== 'prod',
            logging: true,
          }),
         ...
@@ -118,3 +120,28 @@ The Backend of Nuber Eats Clone
      })
      export class AppModule {}
      ```
+4. TypeORM and Nest
+
+   - restaurants entity 만들기
+
+     - `@Entity()`는 데이터베이스 테이블에 매핑되는 클래스에 붙이는 decorator
+
+     ```typescript
+     // restaurant.entity.ts
+     @ObjectType()
+     @Entity()
+     export class Restaurant {
+       @PrimaryGeneratedColumn()
+       @Field(type => Number)
+       id: number;
+
+       @Field(type => String)
+       @Column()
+       name: string;
+     }
+     ```
+
+   - [Active Record vs Data Mapper](https://typeorm.io/#/active-record-data-mapper)
+     - Data Mapper 패턴을 사용하는 이유
+       - 큰 어플리케이션에서 유지보수에 효과적이다.
+       - Repository 클래스에서 모든 쿼리 메서드를 정의해서, 테스트코드등 어디서든 접근하기 쉽다.
