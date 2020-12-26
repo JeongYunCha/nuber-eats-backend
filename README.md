@@ -181,3 +181,34 @@ The Backend of Nuber Eats Clone
        - pick: 필요한 필드만 선택하여 사용
        - omit: 선택한 필드를 제외한 나머지를 사용
        - intersection: 두가지 타입(엔티티)을 결합하여 사용
+
+5. User CRUD
+
+   - `nest g mo users` 으로 users 모듈 만들기
+   - `nest g mo common` common 모듈에 CoreEntity로 공통 컬럼 묶기
+
+     - [TypeORM Special Columns](https://typeorm.io/#/entities/special-columns)
+
+     ```typescript
+     // core.entity.ts
+     export class CoreEntity {
+       @PrimaryGeneratedColumn()
+       id: number;
+
+       @CreateDateColumn()
+       createdAt: Date;
+
+       @UpdateDateColumn()
+       updatedAt: Date;
+     }
+     ```
+
+     ```typescript
+     // user.entity.ts
+     @Entity()
+     export class User extends CoreEntity {
+       @Column()
+       email: string;
+       ...
+     }
+     ```
