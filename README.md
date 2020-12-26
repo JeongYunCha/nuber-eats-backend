@@ -146,3 +146,38 @@ The Backend of Nuber Eats Clone
        - 큰 어플리케이션에서 유지보수에 효과적이다.
        - NestJS에서 자동으로 Repository를 사용할 수 있도록 클래스에 알아서 준비해 준다.
        - Data Mapper 패턴을 이용해서 Repository 를 testgkrh simulate 해볼수있다.
+   - Injecting The Repository
+
+     ```typescript
+     // restaurant.service.ts
+     @Injectable()
+     export class RestaurantService {
+       constructor(
+         @InjectRepository(Restaurant)
+         private readonly restaurants: Repository<Restaurant>,
+       ) {}
+       getAll(): Promise<Restaurant[]> {
+         return this.restaurants.find();
+       }
+     }
+     ```
+
+     ```typescript
+     // restaurant.resolver.ts
+     @Resolver(of => Restaurant)
+     export class RestaurantsResolver {
+       constructor(private readonly restaurantService: RestaurantService) {}
+
+       @Query(returns => [Restaurant])
+       restaurants(): Promise<Restaurant[]> {
+         return this.restaurantService.getAll();
+       }
+     }
+     ```
+
+   - [Mapped Type](https://docs.nestjs.com/graphql/mapped-types#mapped-types)
+     - Entity에 사용된 필드를 Dto로 사용하는 방법
+       - patial: 모든 필드를 그대로 사용
+       - pick: 필요한 필드만 선택하여 사용
+       - omit: 선택한 필드를 제외한 나머지를 사용
+       - intersection: 두가지 타입(엔티티)을 결합하여 사용
