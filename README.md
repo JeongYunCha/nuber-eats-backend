@@ -144,4 +144,5 @@ The Backend of Nuber Eats Clone
    - [Active Record vs Data Mapper](https://typeorm.io/#/active-record-data-mapper)
      - Data Mapper 패턴을 사용하는 이유
        - 큰 어플리케이션에서 유지보수에 효과적이다.
-       - Repository 클래스에서 모든 쿼리 메서드를 정의해서, 테스트코드등 어디서든 접근하기 쉽다.
+       - NestJS에서 자동으로 Repository를 사용할 수 있도록 클래스에 알아서 준비해 준다.
+       - Data Mapper 패턴을 이용해서 Repository 를 testgkrh simulate 해볼수있다.
