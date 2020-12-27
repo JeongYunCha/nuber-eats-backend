@@ -188,6 +188,8 @@ The Backend of Nuber Eats Clone
    - `nest g mo common` common 모듈에 CoreEntity로 공통 컬럼 묶기
 
      - [TypeORM Special Columns](https://typeorm.io/#/entities/special-columns)
+       - `@CreateDateColumn()`
+       - `@UpdateDateColumn()`
 
      ```typescript
      // core.entity.ts
@@ -212,3 +214,18 @@ The Backend of Nuber Eats Clone
        ...
      }
      ```
+
+   - Hashing Passwords
+     - `npm i bcrypt`: hash 관련 패키지
+     - [TypeORM Entity Listeners and Subscribers](https://typeorm.io/#/listeners-and-subscribers)
+       - `@BeforeInsert`이벤트로 Hashing Passwords 하기
+       ```typescript
+       // user.entity.ts
+       export class User extends CoreEntity {
+         ...
+         @BeforeInsert()
+         async hashPassword(): Promise<void> {
+           this.password = await bcrypt.hash(this.password, 10);
+         }
+       }
+       ```
