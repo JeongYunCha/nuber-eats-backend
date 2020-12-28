@@ -216,16 +216,20 @@ The Backend of Nuber Eats Clone
      ```
 
    - Hashing Passwords
-     - `npm i bcrypt`: hash 관련 패키지
+     - `npm i bcrypt`, `npm i @types/bcrypt -D`: hash 관련 패키지
      - [TypeORM Entity Listeners and Subscribers](https://typeorm.io/#/listeners-and-subscribers)
        - `@BeforeInsert`이벤트로 Hashing Passwords 하기
        ```typescript
        // user.entity.ts
        export class User extends CoreEntity {
-         ...
-         @BeforeInsert()
-         async hashPassword(): Promise<void> {
-           this.password = await bcrypt.hash(this.password, 10);
-         }
+        ...
+        @BeforeInsert()
+        async hashPassword(): Promise<void> {
+          try {
+            this.password = await bcrypt.hash(this.password, 10);
+          } catch (e) {
+            throw new InternalServerErrorException();
+          }
+        }
        }
        ```
