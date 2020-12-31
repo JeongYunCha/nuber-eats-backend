@@ -1,18 +1,21 @@
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import * as jwt from 'jsonwebtoken';
 import {
   CreateAccountInput,
   CreateAccountOutput,
 } from './dtos/create-account.dto';
 import { LoginInput, LoginOutput } from './dtos/login.dto';
 import { User } from './entities/user.entity';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class UsersService {
   constructor(
     @InjectRepository(User)
     private readonly users: Repository<User>,
+    private readonly config: ConfigService,
   ) {}
 
   async createAccount({
@@ -55,9 +58,12 @@ export class UsersService {
         };
       }
       // JWT 생성후 유저에게 주기
+      const token = jwt.sign({ id: user.id }, this.config.get('SECRET_KEY'), {
+        algorithm: 'RS256',
+      });
       return {
         ok: true,
-        token: 'user token alalala',
+        token,
       };
     } catch (e) {
       throw new InternalServerErrorException();

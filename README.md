@@ -233,3 +233,53 @@ The Backend of Nuber Eats Clone
         }
        }
        ```
+
+6. USER AUTHENTICATION
+
+   - 방법1: [Nestjs에서 제공하는 passport를 사용](https://docs.nestjs.com/security/authentication)
+   - 방법2: jwt 모둘 직접 구현하기
+     - [패키지 설치](https://www.npmjs.com/package/jsonwebtoken): `npm i jsonwebtoken`, `npm i -D @types/jsonwebtoken`
+     - SECRET_KEY 환경변수 설정 ([RandomKeygen 사이트](https://randomkeygen.com/) CodeIgniter Encryption Keys 활용)
+     - 모듈 생성: `nest g mo jwt`
+   - dependency injenction
+
+     ```typescript
+     // app.module.ts
+     @Module({
+        imports: [
+          ConfigModule.forRoot({
+              /* ... */
+              SECRET_KEY: Joi.string().required(),
+            }),
+          }),
+          /* ... */
+        ]
+      })
+      export class AppModule {}
+     ```
+
+     ```typescript
+     // user.module.ts
+     @Module({
+       imports: [TypeOrmModule.forFeature([User]), ConfigService],
+       /* ... */
+     })
+     export class UsersModule {}
+     ```
+
+     ```typescript
+     // user.service.ts
+     @Injectable()
+     export class UsersService {
+       constructor(
+         @InjectRepository(User)
+         private readonly config: ConfigService,
+       ) {}
+       /* ... */
+       async login({ email, password }: LoginInput): Promise<LoginOutput> {
+         // JWT 생성후 유저에게 주기
+         const token = jwt.sign({ id: user.id }, this.config.get('SECRET_KEY'));
+         /* ... */
+       }
+     }
+     ```
