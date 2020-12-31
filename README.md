@@ -370,3 +370,5 @@ The Backend of Nuber Eats Clone
               }
             }
             ```
+          - [AuthGuard](https://docs.nestjs.com/guards)
+            - 모듈 생성: `nest g mo auth`
