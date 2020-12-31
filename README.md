@@ -241,6 +241,8 @@ The Backend of Nuber Eats Clone
      - [패키지 설치](https://www.npmjs.com/package/jsonwebtoken): `npm i jsonwebtoken`, `npm i -D @types/jsonwebtoken`
      - SECRET_KEY 환경변수 설정 ([RandomKeygen 사이트](https://randomkeygen.com/) CodeIgniter Encryption Keys 활용)
      - 모듈 생성: `nest g mo jwt`
+       - static module
+       - dynamic module
    - dependency injenction
 
      ```typescript
