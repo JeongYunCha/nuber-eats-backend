@@ -9,6 +9,7 @@ import { LoginInput, LoginOutput } from './dtos/login.dto';
 import { User } from './entities/user.entity';
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from 'src/jwt/jwt.service';
+import { PrivateKeyInput } from 'crypto';
 
 @Injectable()
 export class UsersService {
@@ -66,5 +67,9 @@ export class UsersService {
     } catch (e) {
       throw new InternalServerErrorException();
     }
+  }
+
+  async findById(id: number): Promise<User> {
+    return this.users.findOne({ id });
   }
 }
