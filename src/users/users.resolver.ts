@@ -12,6 +12,8 @@ import { LoginInput, LoginOutput } from './dtos/login.dto';
 import { UserProfileInput, UserProfileOutput } from './dtos/user-profile.dto';
 import { User } from './entities/user.entity';
 import { UsersService } from './users.service';
+import { VerifyEmailInput, VerifyEmailOutput } from './dtos/verify-email.dto';
+import { Verification } from './entities/verification.entity';
 
 @Resolver(of => User)
 export class UserResolver {
@@ -88,5 +90,10 @@ export class UserResolver {
         error,
       };
     }
+  }
+
+  @Mutation(returns => VerifyEmailOutput)
+  verifyEmail(@Args('input') { code }: VerifyEmailInput) {
+    this.usersService.verifyEmail(code);
   }
 }
