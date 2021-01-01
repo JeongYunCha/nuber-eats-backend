@@ -375,3 +375,4 @@ The Backend of Nuber Eats Clone
 
 7.  EMAIL VERIFICATION
     - [One-to-one relations](https://typeorm.io/#/one-to-one-relations)
+    - [패키지 설치](https://www.npmjs.com/package/jsonwebtoken): `npm i jsonwebtoken`, `npm i -D @types/jsonwebtoken`
