@@ -372,3 +372,6 @@ The Backend of Nuber Eats Clone
             ```
           - [AuthGuard](https://docs.nestjs.com/guards)
             - 모듈 생성: `nest g mo auth`
+
+7.  EMAIL VERIFICATION
+    - [One-to-one relations](https://typeorm.io/#/one-to-one-relations)
