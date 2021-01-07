@@ -54,7 +54,10 @@ export class UsersService {
   async login({ email, password }: LoginInput): Promise<LoginOutput> {
     try {
       // 이메일로 유저 찾기
-      const user = await this.users.findOne({ email });
+      const user = await this.users.findOne(
+        { email },
+        { select: ['id', 'password'] },
+      );
       if (!user) {
         return {
           ok: false,
@@ -98,14 +101,19 @@ export class UsersService {
   }
 
   async verifyEmail(code: string): Promise<boolean> {
-    const verification = await this.verifications.findOne(
-      { code },
-      { relations: ['user'] },
-    );
-    if (verification) {
-      verification.user.verified = true;
-      this.users.save(verification.user);
+    try {
+      const verification = await this.verifications.findOne(
+        { code },
+        { relations: ['user'] },
+      );
+      if (verification) {
+        verification.user.verified = true;
+        this.users.save(verification.user);
+        return true;
+      }
+      return false;
+    } catch (error) {
+      return false;
     }
-    return false;
   }
 }
